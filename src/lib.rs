@@ -1,9 +1,7 @@
-
 pub mod common {
     use slack_morphism::prelude::*;
     use std::collections::HashSet;
     use std::env;
-
 
     pub fn get_invitees_hashset(teams: String) -> HashSet<SlackUserId> {
         teams.split(',')
