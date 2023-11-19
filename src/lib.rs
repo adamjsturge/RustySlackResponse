@@ -10,6 +10,12 @@ pub mod common {
             .map(|id| SlackUserId(id))
             .collect()
     }
+
+    pub fn string_to_hashset(user_ids: String) -> HashSet<SlackUserId> {
+        user_ids.split(',')
+            .map(|id| SlackUserId(id.to_string()))
+            .collect()
+    }
     
     pub async fn create_channel_and_invite_members(channel_name: String, members:HashSet<SlackUserId>) -> String {
         let token_value: SlackApiTokenValue = env::var("SLACK_BOT_TOKEN")
