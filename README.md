@@ -15,6 +15,9 @@ SECURITY=UXXXXXXX1,UXXXXXXX2,UXXXXXXX3
 LEGAL=UXXXXXX1X,UXXXXXX2X,UXXXXXX3X
 ```
 
-## Development
-
-This project is still under development. More information will be added as the project progresses.
+## Development (Kinda Ordered)
+- [ ] Web Axum
+- [ ] Dockerization
+- [ ] Github Actions to Update Docker Image
+- [ ] Docker Documentations
+- [ ] Make Terminal Tool

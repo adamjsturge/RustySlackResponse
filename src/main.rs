@@ -1,47 +1,11 @@
-use slack_morphism::prelude::*;
-use std::collections::HashSet;
-use dotenv::dotenv;
-use std::env;
-
-
 fn main() {
-    dotenv().ok();
-    let _members = get_invitees_hashset("security,legal".into());
-}
-
-fn get_invitees_hashset(teams: String) -> HashSet<SlackUserId> {
-    teams.split(',')
-        .filter_map(|team| env::var(&team.to_uppercase()).ok()) // If a team doesn't exist, skip it
-        .flat_map(|ids| ids.split(',').map(String::from).collect::<Vec<_>>())
-        .map(|id| SlackUserId(id))
-        .collect()
-}
-
-async fn create_channel_and_invite_members(channel_name: String, members:HashSet<SlackUserId>) -> String {
-    let token_value: SlackApiTokenValue = env::var("SLACK_BOT_TOKEN")
-        .expect("SLACK_BOT_TOKEN is not set in the environment")
-        .into();
-    let token: SlackApiToken = SlackApiToken::new(token_value);
-    let client = SlackClient::new(SlackClientHyperConnector::new());
-    let session = client.open_session(&token);
-
-    let _create_channel_response = session
-        .conversations_create(&SlackApiConversationsCreateRequest {
-            name: channel_name.into(),
-            is_private: Some(true),
-            user_ds: Some(members),
-        })
-        .await
-        .expect("Failed to create channel");
-
-    println!("Channel created and members added successfully.");
-
-    String::from("Done")
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use rusty_slack::common::get_invitees_hashset;
+    use slack_morphism::SlackUserId;
+    // use super::*;
     // use mockito::{mock, server_url};
     use std::env;
     use std::collections::HashSet;
@@ -98,21 +62,4 @@ mod tests {
         env::remove_var("TEAM3");
     }
 
-    // #[tokio::test]
-    // async fn test_create_channel_and_invite_members() {
-    //     let _m = mock("POST", "/api/conversations.create")
-    //         .with_status(200)
-    //         .with_body(r#"{"ok": true, "channel": {"id": "C024BE91L"}}"#)
-    //         .create();
-
-    //     let _n = mock("POST", "/api/conversations.invite")
-    //         .with_status(200)
-    //         .with_body(r#"{"ok": true}"#)
-    //         .create();
-
-    //     env::set_var("SLACK_BOT_TOKEN", "test-token");
-
-    //     let result = create_channel_and_invite_members("test-channel".into(), "user1,user2".into()).await;
-    //     assert_eq!(result, "C024BE91L");
-    // }
 }

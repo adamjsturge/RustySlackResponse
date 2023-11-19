@@ -3,9 +3,22 @@ name = "rusty-slack"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+name = "rusty_slack"
+path = "src/lib.rs"
+
+[[bin]]
+name = "terminal"
+path = "src/bin/terminal.rs"
+
+[[bin]]
+name = "web"
+path = "src/bin/web.rs"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+axum = "0.6"
 slack-morphism = { version = "1.12", features = ["hyper", "axum"] }
 tokio = { version = "1", features = ["full"] }
 serde = { version = "1.0", features = ["derive"] }
