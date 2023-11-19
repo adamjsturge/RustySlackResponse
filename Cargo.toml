@@ -6,8 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-slack-morphism = "1.15" # Use the latest version available
-slack-morphism-hyper = "0.41" # For Hyper support in Slack Morphism
-tokio = { version = "1", features = ["full"] } # Async runtime
-serde = { version = "1.0", features = ["derive"] } # For JSON serialization/deserialization
+slack-morphism = { version = "1.12", features = ["hyper", "axum"] }
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+dotenv = "0.15.0"
+anyhow = "1.0"
+clap =  "4.4.8"
