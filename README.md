@@ -16,7 +16,7 @@ LEGAL=UXXXXXX1X,UXXXXXX2X,UXXXXXX3X
 ```
 
 ## Development (Kinda Ordered)
-- [ ] Web Axum
+- [x] Web Axum
 - [ ] Dockerization
 - [ ] Github Actions to Update Docker Image
 - [ ] Docker Documentations
