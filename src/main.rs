@@ -3,27 +3,24 @@ fn main() {
 
 #[cfg(test)]
 mod tests {
-    use rusty_slack::common::{get_invitees_hashset, string_to_hashset};
+    use rusty_slack::common::{get_members_from_teams_string, get_members_from_user_ids_string};
     use slack_morphism::SlackUserId;
-    // use super::*;
-    // use mockito::{mock, server_url};
     use std::env;
-    use std::collections::HashSet;
 
     #[test]
-    fn test_get_invitees_hashset() {
+    fn test_get_invitees_vec() {
         env::set_var("TEAM1", "user1,user2,user3");
         env::set_var("TEAM2", "user4,user5");
 
         let teams = "team1,team2";
-        let result = get_invitees_hashset(teams.to_string());
+        let result = get_members_from_teams_string(teams.to_string());
 
-        let mut expected = HashSet::new();
-        expected.insert(SlackUserId("user1".to_string()));
-        expected.insert(SlackUserId("user2".to_string()));
-        expected.insert(SlackUserId("user3".to_string()));
-        expected.insert(SlackUserId("user4".to_string()));
-        expected.insert(SlackUserId("user5".to_string()));
+        let mut expected = Vec::new();
+        expected.push(SlackUserId("user1".to_string()));
+        expected.push(SlackUserId("user2".to_string()));
+        expected.push(SlackUserId("user3".to_string()));
+        expected.push(SlackUserId("user4".to_string()));
+        expected.push(SlackUserId("user5".to_string()));
 
         assert_eq!(result, expected);
 
@@ -32,35 +29,35 @@ mod tests {
     }
 
     #[test]
-    fn test_get_invitees_hashset_with_missing_team() {
+    fn test_missing_team() {
         env::set_var("TEAM1", "user1,user2,user3");
-        env::set_var("TEAM3", "user4,user5");
+        env::set_var("TEAM2", "user4,user5");
 
         let teams = "team1,team2,team3";
-        let result = get_invitees_hashset(teams.to_string());
+        let result = get_members_from_teams_string(teams.to_string());
 
-        let mut expected = HashSet::new();
-        expected.insert(SlackUserId("user1".to_string()));
-        expected.insert(SlackUserId("user2".to_string()));
-        expected.insert(SlackUserId("user3".to_string()));
-        expected.insert(SlackUserId("user4".to_string()));
-        expected.insert(SlackUserId("user5".to_string()));
+        let mut expected = Vec::new();
+        expected.push(SlackUserId("user1".to_string()));
+        expected.push(SlackUserId("user2".to_string()));
+        expected.push(SlackUserId("user3".to_string()));
+        expected.push(SlackUserId("user4".to_string()));
+        expected.push(SlackUserId("user5".to_string()));
 
         assert_eq!(result, expected);
 
         env::remove_var("TEAM1");
-        env::remove_var("TEAM3");
+        env::remove_var("TEAM2");
     }
 
     #[test]
-    fn test_string_to_hashset() {
+    fn test_string_to_vec() {
         let user_ids = "user1,user2,user3";
-        let result = string_to_hashset(user_ids.to_string());
+        let result = get_members_from_user_ids_string(user_ids.to_string());
 
-        let mut expected = HashSet::new();
-        expected.insert(SlackUserId("user1".to_string()));
-        expected.insert(SlackUserId("user2".to_string()));
-        expected.insert(SlackUserId("user3".to_string()));
+        let mut expected = Vec::new();
+        expected.push(SlackUserId("user1".to_string()));
+        expected.push(SlackUserId("user2".to_string()));
+        expected.push(SlackUserId("user3".to_string()));
 
         assert_eq!(result, expected);
     }
