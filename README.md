@@ -3,6 +3,10 @@
 
 This is a work in progress project.
 
+## Setup
+Create a slack app
+In `Bot Token Scopes` add `groups:write`
+
 ## Environment Variables
 
 The project uses the following environment variables:
@@ -17,7 +21,7 @@ LEGAL=UXXXXXX1X,UXXXXXX2X,UXXXXXX3X
 
 ## Development (Kinda Ordered)
 - [x] Web Axum
-- [ ] Dockerization
+- [x] Dockerization
 - [ ] Github Actions to Update Docker Image
 - [ ] Docker Documentations
 - [ ] Make Terminal Tool

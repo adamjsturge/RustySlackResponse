@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  rusty-slack-local:
+    build:
+      context: .
+      dockerfile: Docker/Dockerfile
+    volumes:
+      - .:/usr/src/rusty-slack
+    ports:
+      - "3000:3000"
