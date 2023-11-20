@@ -4,7 +4,7 @@ use std::env;
 use std::net::SocketAddr;
 use serde::Deserialize;
 
-use rusty_slack::common::{get_members_from_teams_string, create_channel_and_invite_members, get_members_from_user_ids_string};
+use rusty_slack_response::common::{get_members_from_teams_string, create_channel_and_invite_members, get_members_from_user_ids_string};
 
 #[derive(Deserialize, Debug)]
 struct CreateChannelBodyData {

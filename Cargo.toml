@@ -1,10 +1,10 @@
 [package]
-name = "rusty-slack"
+name = "RustySlackResponse"
 version = "0.2.14"
 edition = "2021"
 
 [lib]
-name = "rusty_slack"
+name = "rusty_slack_response"
 path = "src/lib.rs"
 
 [[bin]]

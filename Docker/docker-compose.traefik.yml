@@ -1,19 +1,15 @@
 version: '3.9'
 
 services:
-  rusty-slack-traefik:
-    build:
-      context: ..
-      dockerfile: Docker/Dockerfile
-    volumes:
-      - .:/usr/src/rusty-slack
+  rusty-slack-response-traefik:
+    image: "something"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.rusty-slack-traefik.entrypoints=web, websecure"
-      - "traefik.http.routers.rusty-slack-traefik.rule=Host(`${MY_HOST}`)"
-      - "traefik.http.routers.rusty-slack-traefik.tls.certresolver=myresolver"
-      - "traefik.http.routers.rusty-slack-traefik.tls.domains[0].main=${MY_HOST}"
-      - "traefik.http.services.rusty-slack-traefik.loadbalancer.server.port=3000"
+      - "traefik.http.routers.rusty-slack-response-traefik.entrypoints=web, websecure"
+      - "traefik.http.routers.rusty-slack-response-traefik.rule=Host(`${MY_HOST}`)"
+      - "traefik.http.routers.rusty-slack-response-traefik.tls.certresolver=myresolver"
+      - "traefik.http.routers.rusty-slack-response-traefik.tls.domains[0].main=${MY_HOST}"
+      - "traefik.http.services.rusty-slack-response-traefik.loadbalancer.server.port=3000"
   traefik:
     image: "traefik:v2.8"
     container_name: "traefik"

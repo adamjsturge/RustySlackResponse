@@ -1,6 +1,6 @@
 FROM rust:latest
 
-WORKDIR /usr/src/rusty-slack
+WORKDIR /usr/src/rusty-slack-response
 
 COPY Cargo.toml Cargo.lock ./
 COPY src/ ./src/

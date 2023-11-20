@@ -3,6 +3,18 @@
 version = 3
 
 [[package]]
+name = "RustySlackResponse"
+version = "0.2.14"
+dependencies = [
+ "axum",
+ "dotenv",
+ "serde",
+ "serde_json",
+ "slack-morphism",
+ "tokio",
+]
+
+[[package]]
 name = "addr2line"
 version = "0.21.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -942,18 +954,6 @@ name = "rustversion"
 version = "1.0.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7ffc183a10b4478d04cbbbfc96d0873219d962dd5accaff2ffbd4ceb7df837f4"
-
-[[package]]
-name = "rusty-slack"
-version = "0.2.14"
-dependencies = [
- "axum",
- "dotenv",
- "serde",
- "serde_json",
- "slack-morphism",
- "tokio",
-]
 
 [[package]]
 name = "rvs_derive"

@@ -1,6 +1,7 @@
 .env
 .github
 **/.git
+target
 Dockerfile
 justfile
 LICENSE

@@ -1,4 +1,4 @@
-# Rusty Slack 
+# RustySlackResponse 
 ## Making Private Slack Channels on Demand
 
 This is a work in progress project.

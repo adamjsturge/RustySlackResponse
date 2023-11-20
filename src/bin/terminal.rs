@@ -1,4 +1,4 @@
-use rusty_slack::common::{create_channel_and_invite_members, get_members_from_teams_string};
+use rusty_slack_response::common::{create_channel_and_invite_members, get_members_from_teams_string};
 use dotenv::dotenv;
 
 #[tokio::main]
