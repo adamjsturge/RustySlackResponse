@@ -1,9 +1,7 @@
 version: '3.9'
 services:
   rusty-slack-response:
-    build:
-      context: .
-      dockerfile: Docker/Dockerfile
+    build: .
     volumes:
       - .:/usr/src/RustySlackResponse
     ports:
